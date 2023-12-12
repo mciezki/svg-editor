@@ -7,9 +7,11 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background: linear-gradient(
+    0deg,
+    rgba(46, 34, 195, 1) 0%,
+    rgba(45, 187, 253, 1) 100%
+  );
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -28,8 +30,6 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
