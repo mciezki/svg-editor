@@ -7,7 +7,11 @@ export function NavbarComponent() {
   const navList = (
     <ul className='mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6'>
       {routes.map((route) => (
-        <NavLink to={route.route} className='flex items-center'>
+        <NavLink
+          to={route.route}
+          key={route.title}
+          className='flex items-center'
+        >
           <Typography
             as='li'
             variant='small'
