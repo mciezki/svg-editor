@@ -23,7 +23,7 @@ const GetrePage = () => {
         const svgContent = await response.text();
 
         if (svgRef.current) {
-          (svgRef.current as HTMLElement).innerHTML = svgContent;
+          (svgRef.current as SVGElement).innerHTML = svgContent;
           updateEditableContents();
         }
       } catch (error) {
@@ -33,7 +33,7 @@ const GetrePage = () => {
 
     const updateEditableContents = () => {
       const editableContents = (
-        svgRef.current as unknown as HTMLElement
+        svgRef.current as unknown as SVGElement
       ).querySelectorAll('text');
 
       if (editableContents) {
@@ -100,8 +100,6 @@ const GetrePage = () => {
         newTexts[index] = [newText];
       }
 
-      console.log(newTexts);
-
       return newTexts;
     });
   };
@@ -148,11 +146,14 @@ const GetrePage = () => {
             tspan.textContent = '';
           }
 
-          tspan.style.fontSize = `${fontSizes[index][tspanIndex]}px`;
+          tspan.setAttribute(
+            'style',
+            `font-size:${fontSizes[index][tspanIndex]}px`
+          );
         });
       } else {
         textElement.textContent = textArray[0];
-        textElement.style.fontSize = `${fontSizes[index]}px`;
+        textElement.setAttribute('style', `font-size:${fontSizes[index]}`);
       }
     });
 
@@ -161,8 +162,11 @@ const GetrePage = () => {
 
   return (
     <div className='min-h-screen p-12'>
-      <div className='flex justify-evenly items-center mb-12'>
-        <form onSubmit={(e) => handleSubmit(e)} className='flex flex-col gap-4'>
+      <div className='flex justify-evenly items-start mb-12'>
+        <form
+          onSubmit={(e) => handleSubmit(e)}
+          className='flex flex-col  gap-4'
+        >
           <p
             className={`${
               isChanged ? 'text-green-300' : 'text-orange-400'

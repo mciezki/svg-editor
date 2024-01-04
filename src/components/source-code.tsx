@@ -1,9 +1,16 @@
 import { useEffect, useState } from 'react';
 import { CodeBlock } from 'react-code-blocks';
+import { useLocation } from 'react-router-dom';
 
 export function SourceSVG({ codeAddress }: { codeAddress: string }) {
   const [code, setCode] = useState('');
   const [isOpen, setIsOpen] = useState(false);
+
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
 
   useEffect(() => {
     const getSnippet = async () => {
