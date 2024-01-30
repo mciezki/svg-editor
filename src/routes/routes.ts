@@ -1,3 +1,4 @@
+import CategoryPage from '../pages/category-page';
 import ExamplePage from '../pages/example-page';
 import GetrePage from '../pages/getre-page';
 
@@ -60,6 +61,12 @@ export const routes = [
     route: `ulotkafront`,
     title: 'Ulotka Front',
     component: GetrePage,
+    index: false,
+  },
+  {
+    route: `categories`,
+    title: 'Kategorie',
+    component: CategoryPage,
     index: false,
   },
 ];
