@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from 'react';
-import { Select, Option } from '@material-tailwind/react';
+import { Select, Option, Button } from '@material-tailwind/react';
 import { SourceSVG } from '../components/source-code';
 import menu from '../assets/categories/categories.svg';
 import { MenuCategory, menuCategories } from '../utils/consts/menu-objects';
@@ -8,6 +8,7 @@ import {
   groupElementsByCategory,
 } from '../utils/group-elements-by-category';
 import { CodeBlock } from 'react-code-blocks';
+import { exportToPdf } from '../utils/exportToPdf';
 
 export default function CategoryPage() {
   const svgRef = useRef(null);
@@ -172,6 +173,14 @@ export default function CategoryPage() {
                 ))}
               </Select>
             ))}
+          <Button
+            onClick={() =>
+              exportToPdf(svgRef.current as unknown as HTMLDivElement)
+            }
+            placeholder=''
+          >
+            Pobierz w PDF
+          </Button>
         </div>
         <div className='w-1/2 h-1/2'>
           <div ref={svgRef}></div>

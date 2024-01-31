@@ -3,6 +3,7 @@ import { Button, Input } from '@material-tailwind/react';
 import { useLocation } from 'react-router-dom';
 import { getSVG } from '../utils/getSVG';
 import { SourceSVG } from '../components/source-code';
+import { exportToPdf } from '../utils/exportToPdf';
 
 const GetrePage = () => {
   const location = useLocation();
@@ -230,6 +231,14 @@ const GetrePage = () => {
           ))}
           <Button placeholder='' type='submit'>
             Submit
+          </Button>
+          <Button
+            onClick={() =>
+              exportToPdf(svgRef.current as unknown as HTMLDivElement)
+            }
+            placeholder=''
+          >
+            Pobierz w PDF
           </Button>
         </form>
         <div className='w-1/2 h-1/2'>
